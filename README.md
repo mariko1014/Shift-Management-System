@@ -73,8 +73,6 @@ shift-management-system/
 
 │   ├── assets/              # 共通素材フォルダ
 
-│   │   └── images/          # 画像データ保存用
-
 │   ├── css/                 # デザイン(CSS)
 
 │   ├── js/                  # 画面操作(JavaScript)

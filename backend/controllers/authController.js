@@ -29,6 +29,49 @@ const registerUser = (req, res) => {
 
 };
 
+
+// ログイン処理
+const loginUser = (req, res) => {
+
+    const { loginId, password } = req.body;
+
+    const sql = `
+        SELECT * FROM users
+        WHERE login_id = ? AND password = ?
+    `;
+
+    db.get(sql, [loginId, password], (err, row) => {
+
+        if (err) {
+
+            console.error(err.message);
+
+            return res.status(500).json({
+                message: "ログイン失敗"
+            });
+
+        }
+
+        // ユーザーが存在した場合
+        if (row) {
+
+            return res.status(200).json({
+                message: "ログイン成功"
+            });
+
+        }
+
+        // ユーザーが存在しない場合
+        return res.status(401).json({
+            message: "IDまたはパスワードが違います"
+        });
+
+    });
+
+};
+
+
 module.exports = {
-    registerUser
+    registerUser,
+    loginUser
 };

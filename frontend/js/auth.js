@@ -1,4 +1,5 @@
 const registerButton = document.getElementById("registerButton");
+const loginButton = document.getElementById("loginButton");
 
 if (registerButton) {
 
@@ -40,4 +41,49 @@ if (registerButton) {
 
     });
 
+}
+
+
+if (loginButton) {
+    loginButton.addEventListener("click", async () => {
+
+        // 入力値取得
+        const loginId = document.getElementById("loginId").value;
+        const password = document.getElementById("password").value;
+
+        try {
+            const response = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    loginId,
+                    password
+                })
+            });
+
+            const data = await response.json();
+
+            // 成功
+            if (response.ok) {
+                alert(data.message);
+
+                // ログイン状態保持
+                localStorage.setItem("isLogin", "true");
+
+                // メイン画面へ遷移
+                window.location.href = "dashboard.html";
+            }
+
+            // 失敗
+            else {
+                alert(data.message);
+            }
+
+        } catch (error) {
+            console.error("ログインエラー:", error);
+            alert("サーバー接続に失敗しました");
+        }
+    });
 }

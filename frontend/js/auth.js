@@ -28,6 +28,7 @@ if (registerButton) {
             });
 
             const data = await response.json();
+            
 
             alert(data.message);
 
@@ -64,6 +65,7 @@ if (loginButton) {
             });
 
             const data = await response.json();
+            console.log(data);
 
             // 成功
             if (response.ok) {
@@ -71,6 +73,9 @@ if (loginButton) {
 
                 // ログイン状態保持
                 localStorage.setItem("isLogin", "true");
+
+                // ユーザー名を保存
+                localStorage.setItem("userName", data.name);    
 
                 // メイン画面へ遷移
                 window.location.href = "dashboard.html";
@@ -87,3 +92,4 @@ if (loginButton) {
         }
     });
 }
+

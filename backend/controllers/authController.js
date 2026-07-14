@@ -56,7 +56,8 @@ const loginUser = (req, res) => {
         if (row) {
 
             return res.status(200).json({
-                message: "ログイン成功"
+                message: "ログイン成功",
+                name: row.name
             });
 
         }

@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+
 <head>
-    <title>メインページ</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ホーム</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
 </head>
+
 <body>
 
+    <div class="dashboard-container">
+
+        <div id="header"></div>
+
+        <!-- 最新情報 -->
+        <div class="notice-box">
+
+            <h3>最新情報</h3>
+
+            <div class="notice-content">
+
+            </div>
+
+        </div>
+
+        <!-- メニュー -->
+        <div class="menu-area">
+
+            <a href="shift-apply.html" class="menu-link">
+                ➤ シフト申請
+            </a>
+
+            <a href="admin.html" class="menu-link" id="adminMenu">
+                ➤ 管理者メニュー
+            </a>
+
+        </div>
+
+    </div>
+
     <script src="../js/authCheck.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/auth.js"></script>
+
 </body>
+
 </html>
